@@ -1,27 +1,58 @@
-﻿// See https://aka.ms/new-console-template for more information
-String arg1 = ShowCharacter("first statement");
-     Char Letter = arg1[1-1];
-
-double price = CalculateRetail(); 
-double percent = CalculateRetail();
-
-
-static string ShowCharacter(String answer)
+﻿class Program 
+{ 
+        static void Main(string[] msg)
     {
-        Console.WriteLine("Please enter {0}",answer);
-        return Console.ReadLine();
-    }
-        Console.WriteLine($"The letter is {Letter}");
+        string Something = ShowCharacter("say something");
+        string position = ShowCharacter("pick position of letter to display");
     
+        int place = Convert.ToInt32(position);
+        char home = Something[place-1];
+         DisplayOutput(Something, position, home);
 
-static double CalculateRetail(double money)
-    {
-        Console.WriteLine("What is the {0}", money);
-        return Console.ReadLine();
-        double wholeDollar = ( price *  percent)/100;
-        double total = wholeDollar + price;
-        Console.WriteLine($"The retail price is {total}");
+
+        double wholeSale = CalculateRetail("wholesale price");
+        double markupPercent = CalculateRetail("markup percent ");
+        double percent = markupPercent / 100;
+        double price = percent * wholeSale;
+        double retail = wholeSale + price; 
+
+         DisplayOutput2(retail);
+    
+            double temp = 80;
+            double temp2 = temp-32;
+            double celcius = .56 * temp2;
+
+        for(temp = 80, temp2 = temp -32, celcius = temp2 * .56; temp < 101; temp++,temp2++)
+        { 
+          
+            Console.WriteLine($"Temperature conversion {temp} F is equal to {celcius} C");
+        }
+
     }
-)
 
- 
+
+    static string ShowCharacter(string msg)
+    {
+        Console.WriteLine("Please {0}",  msg);
+        return Console.ReadLine();   
+    }
+
+    static double CalculateRetail(string msg)
+        {
+            Console. Write("what is {0}       ",msg);
+            return double.Parse(Console.ReadLine());
+        }
+
+    
+        static void DisplayOutput(string Something, string position, char home)
+     {
+         Console.WriteLine($"You said {Something} and asked to display {position} letter which is the letter {home}\n");
+        
+     }
+        static void DisplayOutput2(double retail)
+        {
+            Console.WriteLine("The retail price is:        $ {0:f}\n", retail);
+        }
+
+
+ }
